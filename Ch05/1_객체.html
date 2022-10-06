@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1_객체</title>
+    <script src="./lib/Account.js"></script>
+    <!--
+        날짜 : 2022.10.06
+        이름 : 조수빈
+        내용 : 자바스크립트 객체 실습하기
+    -->
+</head>
+<body>
+    <h3>객체</h3>
+    <script>
+        // 사용자 정의 객체
+        let car = {
+            name: '소나타',
+            color: '흰색',
+            speed: 0,
+            speedUp: function(speed){
+                this.speed += speed;
+            },
+            speedDown: function(speed){
+                this.speed -= speed;
+            },
+            show: function(){
+                document.write('차량명: ' +  this.name + '<br/>');
+                document.write('차량색: ' +  this.color + '<br/>');
+                document.write('차량속도: ' +  this.speed + '<br/>');
+            }
+        };
+
+        car.speedUp(100);
+        car.speedDown(40);
+        car.show();
+
+        // 클래스 설계해서 객체 생성; 자바스크립트에서는 사용자 정의 객체를 훨씬 많이 사용
+        let kb = new Account('국민은행', '101-12-1111', '김유신', 0);
+        kb.deposit(10000); 
+        kb.withdraw(2000);
+        kb.show();
+        
+        let wr = new Account('우리은행', '101-12-1001', '김춘추', 0);
+        wr.deposit(30000);
+        wr.withdraw(7000);
+        wr.show();
+    </script>
+</body>
+</html>

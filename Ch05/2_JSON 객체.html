@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_JSON 객체</title>
+    <!--
+        날짜 : 2022.10.06
+        이름 : 조수빈
+        내용 : 자바스크립트 JSON 객체 실습하기
+
+        JSON 객체
+         - JavaScript Object Notation 자바스크립트 객체 표기 방식
+         - 키-값 쌍으로 이루어지며 키는 반드시 큰따옴표 처리
+         - JSON은 이기종간의 데이터 교환을 위한 표준 데이터 포멧
+    -->
+</head>
+<body>
+    <h3>JSON 객체</h3>
+    <script>
+
+        let user = {
+            "uid": "a101", // key-value pair; key값은 무조건 쌍따옴표
+            "name": "김유신",
+            "hp": "010-1234-1001",
+            "age": 25
+        };
+
+        document.write('user: ' + user + '<br/>'); // object라고만 나오지 객체 내부의 내용이 출력되지 않음
+        document.write('uid: ' + user.uid + '<br/>');
+        document.write('name: ' + user.name + '<br/>');
+        document.write('hp: ' + user.hp + '<br/>');
+        document.write('age: ' + user.age + '<br/>');
+        
+        // JSON 객체 배열
+        let jsonData = {"users":[ // 중괄호 앞의 users는 배열 이름
+            {"uid": "a101", "name": "김유신", "age":25, "addr": "서울"},
+            {"uid": "a102", "name": "김춘추", "age":35, "addr": "대전"},
+            {"uid": "a103", "name": "장보고", "age":45, "addr": "대구"},
+            {"uid": "a104", "name": "강감찬", "age":55, "addr": "부산"},
+            {"uid": "a105", "name": "이순신", "age":65, "addr": "광주"},
+        ]};
+
+        // JSON 객체 반복문
+        for(let user of jsonData.users){
+            document.write('<p>');
+            document.write('uid: ' + user.uid + '<br/>');
+            document.write('name: ' + user.name + '<br/>');
+            document.write('age: ' + user.age + '<br/>');
+            document.write('addr: ' + user.addr + '<br/>');
+            document.write('</p>');
+        }
+
+        // JSON 문자열 반환
+        let strJson = JSON.stringify(jsonData); // from json to string
+        document.write('jsonData: ' + strJson + '<br/>');
+        
+        let json = JSON.parse(strJson); // from string to json
+        document.write('json: ' + json + '<br/>');
+    </script>
+</body>
+</html>
