@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4_문서객체</title>
+    <!--
+        날짜 : 2022.10.07
+        이름 : 조수빈
+        내용 : 자바스크립트 문서객체(DOM) 실습하기
+
+        문서객체(DOM)
+         - 문서객체는 HTML 문서의 태그요소를 객체로 변환한 모델
+         - document 내장객체를 이용해 문서객체를 제어
+         - document 내장객체는 제한적이고 불편하기 때문에 jQuery로 처리
+    -->
+</head>
+<body>
+    
+    <h3>문서객체(DOM)</h3>
+
+    <h1>h1 제목입니다</h1>
+    <h2>h2 제목입니다</h2>
+
+    <p id="txt">
+        내용 입니다.
+    </p>
+    <button onclick="removeTxt()">내용삭제</button>
+
+    <script> 
+    // html 내용보다 앞에 있으면 실행안됨 <- 위에서 밑으로 코드를 읽어나가므로(순차 실행) h1이 먼저 나와야 여기서 h1 선택 가능
+    // 순차실행하면서 읽어들이는 각 태그를 객체화 => 끝까지 다 읽으면 각 태그 객체를 요소로 하는, 트리 형태의 DOM 구조 완성
+    // 페이지의 모든 문서객체가 생성된 후에 실행해야 되므로 마지막에 스크립트 처리
+        document.querySelector('h1').style.color = 'red';
+        document.querySelector('h2').style.background = 'orange';
+        let txt = document.getElementById('txt');
+        txt.style.width = '100px';
+        txt.style.height = '100px';
+        txt.style.border = '1px solid black';
+
+        function removeTxt(){
+            document.getElementById('txt').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
