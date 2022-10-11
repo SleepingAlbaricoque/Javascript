@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_jQuery 선택자</title>
+    <!--
+        날짜 : 2022.10.11
+        이름 : 조수빈
+        내용 : jQuery 선택자 실습하기
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> <!-- jQuery 파일 다운받지 않고 바로 링크 걸어서 사용-->
+    <script>
+        $(document).ready(function(){
+
+            // 전체 선택자
+            $('*').css('color','blue');
+
+            // 태그 선택자
+            $('h3').css('color', 'black');
+
+            // 클래스 선택자
+            $('.gwangju').css('color','green');
+
+            // 아이디 선택자
+            $('#seoul').css('color','red');
+
+            // 자손 선택자
+            $('ol > li').css('color', 'orange');
+            $('ul span').css('color', 'aqua');
+
+            // 구조 선택자
+            $('ul > li:nth-child(2)').css('color', 'yellow');
+            $('ol > li:nth-of-type(1)').css('color', 'pink');
+            $('ul > li:eq(2)').css('color', 'brown'); // eq는 index number; css에는 없는 선택자; 여기서 li:eq(2)는 대구 <- eq는 인덱스라 0부터 시작
+
+            // 속성 선택자
+            $('input[name=id]').css('background','gray');
+            $('input[name=pw]').css('border','1px solid red');
+
+            // 셀프 선택자
+            $('ol > li').each(function(){ // ol > li가 네 개 있으므로 tags는 배열; 여기는 전부 자바스크립트가 아닌 제이쿼리 함수
+                $(this).css('background', 'olive'); // each는 네 개 각각 li 하나씩, this는 각 li 가리킴
+            });
+            
+
+        });
+
+    </script>
+</head>
+<body>
+    <h3>jQuery 선택자</h3>
+
+    <ul>
+        <li id="seoul">서울</li>
+        <li>대전</li>
+        <li>대구</li>
+        <li class="busan">
+            <span>부산</span>
+            <ol>
+                <li>서면</li>
+                <li>경성대</li>
+                <li>해운대</li>
+                <li>남포동</li>
+            </ol>
+        </li>
+        <li class="gwangju">광주</li>
+    </ul>
+
+    <input type="text" name="id">
+    <input type="text" name="pw">
+</body>
+</html>

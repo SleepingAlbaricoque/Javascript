@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1_jQuery 기초</title>
+    <!--
+        날짜 : 2022.10.11
+        이름 : 조수빈
+        내용 : jQuery 기초 실습하기
+
+        자바스크립트이 점점 발전하면서 jQuery에 대한 필요성 감소 중 -> 이후 React.js 등 프레임워크 배우기 위한 틀로만 공부할 것
+        코딩할 때는 jQuery가 더 효율적이지만 코드가 브라우저에 직접 실행될 때는 순수 javascript, 또는 Vanilla Script가 더 빠름 => 브라우저 입장에서는 바닐라 스크립트가 더욱 효율적
+        따라서 너무 jQuery에 의존하면 안 됨
+    -->
+    <script src="./js/jquery-3.6.1.min.js"></script>   
+    <script>
+        alert('1'); // alert 1, 3, 2 순서대로 실행됨
+
+        // HTML 페이지의 로드 완료 후 실행(로드 완료 = 모든 태그를 문서 객체화 완료)
+        window.onload = function(){
+            alert('2');
+            
+        // 자바스크립트
+        let city = document.getElementById('city');
+        let li = city.getElementsByTagName('li'); // 배열
+        li[3].style.color = 'blue';
+        };
+
+        // 페이지 로드 완료되면 실행, 즉, window.onload와 상동
+        $(document).ready(function(){   
+        // 제이쿼리
+            $('#city > li:nth-child(5)').css('color', 'orange'); // jQuery 함수, jQuery의 css 함수 두 번 호출
+        }); 
+    </script>
+</head>
+<body>
+    <h3>javascript vs jQuery</h3>
+
+    <ul id="city">
+        <li>서울</li>
+        <li>대전</li>
+        <li>대구</li>
+        <li>부산</li>
+        <li>광주</li>
+    </ul>
+</body>
+</html>
+<script> // 맨 밑에 놓아야 위의 태그 객체들 불러올 수 있음 BUT window.onload나 $().ready() 기능 사용하면 header에서 사용 가능
+    alert('3');
+</script>
