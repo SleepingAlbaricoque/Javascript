@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5_브라우저 객체</title>
+    <!--
+        날짜 : 2022.10.11
+        이름 : 조수빈
+        내용 : 자바스크립트 브라우저 객체(Browser Object Model) 실습하기
+
+        브라우저 객체
+         - HTML이 출력되는 브라우저와 관련된 객체로 document, location, navigation 등
+         - location.href 기능으로 페이지 이동 
+    -->
+    <script>
+        function goNaver(){
+            window.location.href = 'https://naver.com'; // location 객체의 href 메서드; location은 window의 하위 객체, window는 생략 가능
+        }
+    </script>
+</head>
+<body>
+    <h3>브라우저 객체</h3>
+
+    <button onclick="window.alert('기본대화상자')">대화상자</button> <!-- alert는 window 객체의 메서드임; window는 생략 가능-->
+    <button onclick="window.confirm('확인, 취소 대화상자')">대화상자</button> <!-- confirm 역시 window 객체의 메서드-->
+
+    <button onclick="goNaver()">네이버</button>
+    <button onclick="history.forward()">앞</button> <!-- history는 navigation 객체의 하위 객체-->
+    <button onclick="history.back()">뒤</button>
+</body>
+</html>
