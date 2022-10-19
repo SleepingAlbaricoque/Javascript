@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_Aajax xml 데이터 처리</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        $('button').click(function(){
+            // 데이터 요청
+            $.ajax({ // ajax 함수 안에 json 객체 삽입
+                url: 'http://chhak.or.kr/data/user.xml',
+                type: 'GET',
+                // data: '', 클라이언트가 서버로 json 데이터 보낼 때 필요한 항목
+                dataType: 'xml', // 간혹 xml, html도 있긴 함
+                success: function(data){ // data, 즉, json 객체를 불러들임
+                    console.log(data);
+
+                    // XML parsing
+                    let xml = $(data);
+                    $('p > span:eq(0)').text(xml.find('uid').text());
+                    $('p > span:eq(1)').text(xml.find('name').text());
+                    $('p > span:eq(2)').text(xml.find('hp').text());
+                    $('p > span:eq(3)').text(xml.find('age').text());
+                }
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <h3>1.Ajax</h3>
+    
+    <button>데이터 요청하기</button>
+    <p>
+        아이디: <span></span><br/>
+        이름: <span></span><br/>
+        휴대폰: <span></span><br/>
+        나이: <span></span><br/>
+    </p>
+</body>
+</html>

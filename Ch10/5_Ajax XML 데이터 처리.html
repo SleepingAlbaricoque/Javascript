@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML 데이터처리</title>
+    <!--
+        날짜 : 2022.10.19
+        이름 : 조수빈
+        내용 : Ajax XML 데이터처리 실습하기
+    -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        $('button').click(function(){
+
+            //데이터 요청
+            $.ajax({
+                url: 'http://chhak.or.kr/data/users.xml',
+                type: 'GET',
+                dataType: 'xml',
+                success: function(data){
+                    console.log(data);
+
+                    // 화면 처리
+                    let users = $(data).find('user');
+
+                    users.each(function(){
+
+                        let tags = `<tr> 
+                                        <td>${$(this).find('uid').text()}</td> 
+                                        <td>${$(this).find('name').text()}</td>
+                                        <td>${$(this).find('hp').text()}</td>
+                                        <td>${$(this).find('age').text()}</td>
+                                    </tr>`; 
+                                    // tags의 바깥 ${}은 표현 언어; 출력을 위한 것
+
+                        $('table').append(tags);
+                    });
+                }
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <h3>XML 데이터 처리</h3>
+
+    <button>데이터 요청하기</button>
+
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>휴대폰</th>
+            <th>나이</th>
+        </tr>
+    </table>
+</body>
+</html>
